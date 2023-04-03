@@ -1,0 +1,32 @@
+% Read in the images
+img_flower = imread("images/flower.jpg");
+img_tiger = imread("images/tiger.jpg");
+
+% Convert the images to grayscale
+img_flower_gray = rgb2gray(img_flower);
+img_tiger_gray = rgb2gray(img_tiger);
+
+% Define the number of clusters for K-means clustering
+K = 2;
+
+% Set the tolerance for convergence
+tolerance = 1e-4;
+
+% Call kmeans_init to initialize cluster centroids
+centroids = kmeans_init(img_tiger_gray, K);
+
+% Call my_kmeans with initialized centroids
+[clustered_img, centroids] = my_kmeans(img_tiger_gray, K, tolerance, centroids);
+
+% Call kmeans_init for the second image
+centroids2 = kmeans_init(img_flower_gray, K);
+
+% Call my_kmeans with initialized centroids
+[clustered_img2, centroids2] = my_kmeans(img_flower_gray, K, tolerance, centroids2);
+
+% Display the original image and the segmented images
+figure;
+subplot(2,2,1); imshow(img_tiger_gray); title('Original Image');
+subplot(2,2,2); imshow(clustered_img, []); title('K-means Clustering');
+subplot(2,2,3); imshow(img_flower_gray); title('Thresholding');
+subplot(2,2,4); imshow(clustered_img2, []); title('Thresholding');
