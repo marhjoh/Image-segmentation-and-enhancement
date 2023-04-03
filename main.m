@@ -65,10 +65,14 @@ region_growing_flower_histeq = my_region_growing(img_flower_histeq, threshold_fo
 %% Display results
 % Display the original images and the images after histogram equalization
 figure;
-subplot(2,2,1); imshow(img_tiger); title('Original Image');
-subplot(2,2,2); imshow(img_tiger_histeq); title('After Histogram Equalization');
-subplot(2,2,3); imshow(img_flower); title('Original Image');
-subplot(2,2,4); imshow(img_flower_histeq); title('After Histogram Equalization');
+subplot(2,4,1); imshow(img_tiger); title('Original Image');
+subplot(2,4,2); imshow(rgb2gray(img_tiger)); title('Grayscale Original Image');
+subplot(2,4,3); imshow(img_tiger_histeq); title('After Histogram Equalization');
+subplot(2,4,4); imshow(rgb2gray(img_tiger_histeq)); title('Greyscale After Histogram Equalization');
+subplot(2,4,5); imshow(img_flower); title('Original Image');
+subplot(2,4,6); imshow(rgb2gray(img_flower)); title('Grayscale Original Image');
+subplot(2,4,7); imshow(img_flower_histeq); title('After Histogram Equalization');
+subplot(2,4,8); imshow(rgb2gray(img_flower_histeq)); title('Grayscale After Histogram Equalization');
 
 % Display the original image and the segmented images
 figure;
