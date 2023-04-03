@@ -11,7 +11,7 @@ threshold = 128;
 K = 2;
 
 % Set the region growing parameters
-threshold_for_region_growing = 8;
+threshold_for_region_growing = 10;
 
 %% Thresholding
 % Perform thresholding
@@ -92,7 +92,7 @@ subplot(2,3,6); imshow(kmeans_img_flower_gray_histeq); title('After Histogram Eq
 figure;
 subplot(2,3,1); imshow(img_tiger_gray); title('Original Image');
 subplot(2,3,2); imshow(region_growing_tiger, []); title('Region-Growing Segmentation');
-subplot(2,3,3); imshow(region_growing_tiger_histeq); title('After Histogram Equalization and Region Growing Segmentation');
+subplot(2,3,3); imshow(region_growing_tiger_histeq, []); title('After Histogram Equalization and Region Growing Segmentation');
 subplot(2,3,4); imshow(img_flower_gray); title('Original Image');
 subplot(2,3,5); imshow(region_growing_flower, []); title('Region-Growing Segmentation');
-subplot(2,3,6); imshow(region_growing_flower_histeq); title('After Histogram Equalization and Region-Growing Segmentation');
+subplot(2,3,6); imshow(region_growing_flower_histeq, []); title('After Histogram Equalization and Region-Growing Segmentation');
