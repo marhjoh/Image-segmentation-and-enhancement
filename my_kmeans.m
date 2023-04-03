@@ -1,3 +1,8 @@
+%% K-means clustering Segmentation
+% The k-means algorithm is used to segment an image into K regions or
+% clusters, much alike thresholding but with the oppurtunity to allow more
+% than two "classes".
+
 function [seg, centers] = my_kmeans(img, K)
     
     % Convert the input image to grayscale and double
