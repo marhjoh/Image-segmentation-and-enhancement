@@ -1,5 +1,4 @@
 function [clustered_img, centroids] = my_kmeans(img, K, tolerance)
-
 % Convert the image to a vector
 img_vector = double(img(:));
 
