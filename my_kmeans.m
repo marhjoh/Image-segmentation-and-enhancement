@@ -1,28 +1,29 @@
-function [clustered_img, centroids] = my_kmeans(img, K, tolerance)
-% Convert the image to a vector
-img_vector = double(img(:));
+function [seg, centers] = my_kmeans(img, K)
+    
+    % Convert the input image to grayscale and double
+    img_gray = double(rgb2gray(img));
 
-% Initialize the cluster centroids
-centroids = rand(K, size(img_vector, 2));
+    % Initialize the segmentation matrix
+    seg = zeros(size(img_gray));
 
-% Initialize old_centroids
-old_centroids = zeros(size(centroids));
+    % Define the step size for thresholding
+    step = 256/K;
 
-% Iterate until convergence
-while norm(centroids - old_centroids) >= tolerance
-    % Update old centroids
-    old_centroids = centroids;
+    % Initialize the centers array
+    centers = zeros(1,K);
 
-    % Assign data points to clusters
-    distances = pdist2(img_vector, centroids);
-    [~, cluster_ids] = min(distances, [], 2);
-
-    % Update centroids
+    % Compute the initial centers
     for i = 1:K
-        centroids(i,:) = mean(img_vector(cluster_ids == i, :), 1);
+        centers(i) = (i-1/2)*step;
     end
-end
 
-% Reshape the cluster ids into an image
-clustered_img = reshape(cluster_ids, size(img));
+    % Loop over each pixel in the image
+    for i = 1:size(img_gray, 1)
+        for j = 1:size(img_gray, 2)
+            % Compute the index of the closest center
+            [~, index] = min(abs(img_gray(i,j) - centers));
+            % Assign the pixel to the corresponding segment
+            seg(i,j) = index;
+        end
+    end
 end
