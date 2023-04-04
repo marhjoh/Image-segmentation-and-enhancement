@@ -23,12 +23,14 @@ function [img_new, cdfnorm] = my_histeq(img)
         end
     end
     
-    % calculate cumulative distribution function of ehanced image
+    % calculate cumulative distribution function of enhanced image
     h_new = imhist(img_new);
     cdf_new = zeros(1,256);
     for i=1:256
         cdf_new(i) = sum(h_new(1:i));
     end
 end
+
+
 
 
